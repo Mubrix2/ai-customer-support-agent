@@ -1,3 +1,16 @@
+venv/
+venv-linux/
+.venv/
+.env
+__pycache__/
+*.pyc
+data/
+*.db
+.coverage
+htmlcov/
+dist/
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

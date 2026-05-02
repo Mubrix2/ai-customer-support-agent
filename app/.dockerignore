@@ -1,0 +1,13 @@
+venv/
+venv-linux/
+.venv/
+__pycache__/
+*.pyc
+.env
+.git/
+tests/
+*.md
+data/
+*.db
+.coverage
+htmlcov/
