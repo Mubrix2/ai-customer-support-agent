@@ -45,6 +45,7 @@ def _auto_seed():
     finally:
         db.close()
 
+
 def create_app() -> FastAPI:
     app = FastAPI(
         title="AI Customer Support Agent",
