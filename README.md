@@ -7,7 +7,7 @@ through a natural conversation interface. The agent checks order status, logs
 complaints, retrieves business information, and escalates to human agents — 
 all by deciding which tools to call based on the customer's message.
 
-**Live Demo:** [your-app.streamlit.app](https://ai-customer-support-agent-ymriu4vigtikvtwksjvmwp.streamlit.app/))  
+**Live Demo:** [your-app.streamlit.app](https://ai-customer-support-agent-ymriu4vigtikvtwksjvmwp.streamlit.app/)  
 **API Docs:** [your-api.onrender.com/docs](https://ai-customer-support-agent-uf0z.onrender.com/docs)
 
 ---
