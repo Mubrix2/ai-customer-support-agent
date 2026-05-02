@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.routes import chat, health
-from app.config import APP_ENV
+from app.config import APP_ENV, BASE_DIR
 from app.db.database import init_db
 from app.core.agent import get_agent
 
@@ -19,13 +19,31 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info(f"Starting AI Customer Support Agent API | env={APP_ENV}")
-    # Initialise database tables
     init_db()
-    # Pre-compile the agent so first request is not slow
+    # Auto-seed if database is empty
+    _auto_seed()
     get_agent()
-    logger.info("Database and agent ready.")
+    logger.info("Database, seed data, and agent ready.")
     yield
 
+
+def _auto_seed():
+    """Seed the database with mock data if it is empty."""
+    from app.db.database import SessionLocal
+    from app.db.models import Order
+    db = SessionLocal()
+    try:
+        count = db.query(Order).count()
+        if count == 0:
+            logger.info("Database is empty — running seed data")
+            import sys
+            sys.path.append(str(BASE_DIR))
+            from scripts.seed_data import seed
+            seed()
+        else:
+            logger.info(f"Database already has {count} orders — skipping seed")
+    finally:
+        db.close()
 
 def create_app() -> FastAPI:
     app = FastAPI(
