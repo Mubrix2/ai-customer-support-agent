@@ -12,6 +12,12 @@ all by deciding which tools to call based on the customer's message.
 
 ---
 
+## Demo
+
+![Demo](demo.gif)
+
+---
+
 ## What Makes This an Agent (Not a Chatbot)
 
 A chatbot follows a fixed script. An agent decides what to do next.
